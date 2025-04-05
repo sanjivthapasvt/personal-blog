@@ -20,6 +20,7 @@ class Project(models.Model):
     github = models.CharField(max_length=500, null=True, blank=True)
     demo = models.CharField(max_length=300, null=True, blank=True)
     featured = models.BooleanField(default=False)
+    createdAt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

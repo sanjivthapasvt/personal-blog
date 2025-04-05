@@ -16,6 +16,7 @@ class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=2500, blank=True, null=True)
+    subtitle = models.CharField(max_length=250, null=True, blank=True)
     content = models.TextField(default=None)
     img = models.ImageField(upload_to='images/', null=True, blank=True, storage=MediaCloudinaryStorage())
     tags = JSONField(schema=TAGS_SCHEMA, default=list)

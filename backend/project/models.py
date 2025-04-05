@@ -12,6 +12,7 @@ class Project(models.Model):
     }
 
     title = models.CharField(max_length=100, null=False, blank=False)
+    subtitle = models.CharField(max_length=250, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     technologies = JSONField(schema=TECH_SCHEMA, default=list)
     video = models.FileField(upload_to='videos/', blank=True, null=True, storage=VideoMediaCloudinaryStorage(), validators=[validate_video])

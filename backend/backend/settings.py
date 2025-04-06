@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'love',
     'rest_framework',
     'rest_framework_simplejwt',
-    'drf_spectacular',
     'rest_framework_simplejwt.token_blacklist',
     'django_jsonform'
 ]
@@ -67,7 +66,6 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
     ],
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 SIMPLE_JWT = {

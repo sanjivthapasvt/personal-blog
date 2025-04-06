@@ -9,5 +9,5 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Curl your backend
+      - name: Curl personal-blog
         run: curl -s https://personal-blog-l9i7.onrender.com/ping

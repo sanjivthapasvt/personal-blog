@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Curl your backend
-        run: curl -s https://personal-blog-l9i7.onrender.com/ping >
+        run: curl -s https://personal-blog-l9i7.onrender.com/ping

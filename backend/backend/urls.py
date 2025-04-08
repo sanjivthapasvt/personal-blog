@@ -21,7 +21,8 @@ urlpatterns = [
     path('api/', include('project.urls')),
     #love urks
     path('api/', include('love.urls')),
-    #for github action
+    #github action
+    
     path("ping/", ping),
 ]
 

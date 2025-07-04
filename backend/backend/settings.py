@@ -7,15 +7,13 @@ import dj_database_url
 load_dotenv()
 
 
-
 SECRET_KEY = os.getenv('SECRET_KEY')
-
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv("ALLOWED_HOST"), "127.0.0.1"]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -154,8 +152,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "https://sanjiv-thapa.vercel.app",
-    "http://localhost:5173",
-]
+CORS_ALLOWED_ORIGINS =  os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+
 CORS_ALLOW_CREDENTIALS = True

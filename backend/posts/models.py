@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django_jsonform.models.fields import JSONField
 from cloudinary_storage.storage import MediaCloudinaryStorage
+from django.utils.text import slugify
 
 
 
@@ -17,12 +18,18 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=2500, blank=True, null=True)
     subtitle = models.CharField(max_length=250, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     content = models.TextField(default=None)
     img = models.ImageField(upload_to='images/', null=True, blank=True, storage=MediaCloudinaryStorage())
     tags = JSONField(schema=TAGS_SCHEMA, default=list)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, through='PostLike', related_name='liked_post', blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug and self.title:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.title or f"Post by {self.user.username}"

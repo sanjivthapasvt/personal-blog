@@ -4,8 +4,8 @@ from rest_framework.routers import DefaultRouter
 
 #for viewset router
 router = DefaultRouter()
-router.register(r'posts', PostViewSet)
-router.register(r'posts/(?P<post_pk>\d+)/comments', CommentViewSet)
+router.register(r'posts', PostViewSet, basename='post')
+router.register(r'posts/(?P<post_pk>[^/]+)/comments', CommentViewSet, basename='comment')
 
 urlpatterns = [
     path('', include(router.urls)),

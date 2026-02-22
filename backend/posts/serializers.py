@@ -6,6 +6,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
+        read_only_fields = ['slug', 'created_at', 'updated_at']
         
     def validate(self, data):
         if not data.get('title') and not data.get('img'):
